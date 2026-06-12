@@ -11,6 +11,12 @@ exports.sequelize = new sequelize_1.Sequelize(env_1.default.DB_NAME, env_1.defau
     port: env_1.default.DB_PORT,
     dialect: 'mysql',
     logging: env_1.default.NODE_ENV === 'development' ? console.log : false,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
 });
 exports.default = exports.sequelize;
 //# sourceMappingURL=database.js.map

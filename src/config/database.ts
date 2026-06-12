@@ -6,6 +6,12 @@ export const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, {
   port: env.DB_PORT,
   dialect: 'mysql',
   logging: env.NODE_ENV === 'development' ? console.log : false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 });
 
 export default sequelize;

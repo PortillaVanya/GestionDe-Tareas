@@ -6,6 +6,7 @@ declare const _default: {
     DB_PASS: string;
     DB_NAME: string;
     DB_PORT: number;
+    DATABASE_URL: string;
     JWT_SECRET: string;
     JWT_EXPIRES_IN: string;
     SMTP_HOST: string;

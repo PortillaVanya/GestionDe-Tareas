@@ -9,6 +9,7 @@ export default {
   DB_PASS: process.env.DB_PASS || '',
   DB_NAME: process.env.DB_NAME || 'tareas_db',
   DB_PORT: Number(process.env.DB_PORT) || 3306,
+  DATABASE_URL: process.env.DATABASE_URL,
   JWT_SECRET: process.env.JWT_SECRET || 'secret',
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '1d',
   SMTP_HOST: process.env.SMTP_HOST,

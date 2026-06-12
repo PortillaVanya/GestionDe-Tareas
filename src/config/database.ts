@@ -1,10 +1,8 @@
 import { Sequelize } from 'sequelize';
 import env from './env';
 
-export const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, {
-  host: env.DB_HOST,
-  port: env.DB_PORT,
-  dialect: 'mysql',
+const dbOptions = {
+  dialect: 'mysql' as const,
   logging: env.NODE_ENV === 'development' ? console.log : false,
   dialectOptions: {
     ssl: {
@@ -12,6 +10,14 @@ export const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, {
       rejectUnauthorized: false
     }
   }
-});
+};
+
+export const sequelize = env.DATABASE_URL
+  ? new Sequelize(env.DATABASE_URL, dbOptions)
+  : new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASS, {
+      ...dbOptions,
+      host: env.DB_HOST,
+      port: env.DB_PORT,
+    });
 
 export default sequelize;
